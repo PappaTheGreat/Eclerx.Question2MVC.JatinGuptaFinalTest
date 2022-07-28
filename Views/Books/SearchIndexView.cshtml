@@ -1,0 +1,32 @@
+﻿@model Eclerx.Question2MVC.JatinGupta.ViewModels.BookSearchVM
+
+@{
+    ViewBag.Title = "SearchIndexView";
+}
+
+<h2>SearchIndexView</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Search Book by Genre</h2>
+        </div>
+        <hr />
+
+        @using (Html.BeginForm("GetBooks", "Books", FormMethod.Get))
+        {
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Select a Author Name</label>
+                <div class="col-sm-3">
+                    @Html.DropDownList("BookName", Model.Genre, "--Select--", new { @class = "form-select" })
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.Partial("_BookSearchView", Model)
+        </div>
+    </div>
+</div>
